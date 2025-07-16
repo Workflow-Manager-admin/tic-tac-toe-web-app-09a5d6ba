@@ -1,13 +1,15 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
+  /* Theme colors */
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --text-primary: #424242;
+  --primary-color: #1976D2;
+  --secondary-color: #424242;
+  --accent-color: #FFC107;
+  --border-color: #e0e0e0;
+  --board-bg: #ffffff;
+  --cell-hover: #f5f5f5;
 }
 
 [data-theme="dark"] {
@@ -26,7 +28,89 @@
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--board-bg);
+}
+
+.game-title {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.status {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  background-color: var(--board-bg);
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.square:hover:not(:disabled) {
+  background-color: var(--cell-hover);
+}
+
+.square:disabled {
+  cursor: not-allowed;
+}
+
+.reset-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.reset-button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    padding: 1rem;
+  }
+
+  .square {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .game-title {
+    font-size: 2rem;
+  }
 }
 
 .App-logo {
